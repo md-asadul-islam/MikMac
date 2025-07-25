@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Modern Solutions</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-spinner"></div>
+    </div>
+
+    <!-- Header & Navigation (same as index.html) -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">Mik<span>Mac</span></a>
+            
+            <nav class="nav-desktop">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="services.html">Services</a>
+                <a href="features.html">Features</a>
+                <a href="others.html">Others</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search..." id="searchInput">
+                </div>
+                
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Navigation (same as index.html) -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">Mik<span>Mac</span></a>
+            <button class="close-nav" id="closeNav">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="services.html">Services</a>
+            <a href="features.html">Features</a>
+            <a href="others.html">Others</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-content">
+            <h1>Our Story & Mission</h1>
+            <p>Discover who we are, what we stand for, and how we're transforming the digital landscape.</p>
+        </div>
+    </section>
+    
+    <!-- About Content Section -->
+    <section class="about-content">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Who We Are</h2>
+                <p>Modern Solutions was founded in 2015 with a simple goal: to help businesses thrive in the digital age. What started as a small team of passionate developers and designers has grown into a full-service digital agency serving clients worldwide.</p>
+                <p>We believe in the power of technology to transform businesses and create meaningful connections with customers. Our team of experts brings together diverse skills and perspectives to deliver innovative solutions that drive real results.</p>
+                
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="150">0</span>+
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="300">0</span>+
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="98">0</span>%
+                        <span class="stat-label">Client Retention</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" alt="Our Team">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Values Section -->
+    <section class="values">
+        <div class="section-header">
+            <h2>Our Core Values</h2>
+            <p>The principles that guide everything we do</p>
+        </div>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Innovation</h3>
+                <p>We constantly push boundaries and explore new technologies to deliver cutting-edge solutions.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Integrity</h3>
+                <p>We build trust through transparency, honesty, and ethical business practices.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Collaboration</h3>
+                <p>We work closely with our clients as partners, ensuring their vision becomes reality.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>Excellence</h3>
+                <p>We're committed to delivering the highest quality work in every project we undertake.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section class="team">
+        <div class="section-header">
+            <h2>Meet Our Leadership</h2>
+            <p>The talented individuals driving our success</p>
+        </div>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <h3>Sarah Johnson</h3>
+                <p class="position">CEO & Founder</p>
+                <p class="bio">With over 15 years in the tech industry, Sarah leads our strategic vision and company growth.</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <h3>Michael Chen</h3>
+                <p class="position">CTO</p>
+                <p class="bio">Michael oversees our technical strategy and ensures we stay at the forefront of innovation.</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <h3>Emily Rodriguez</h3>
+                <p class="position">Creative Director</p>
+                <p class="bio">Emily leads our design team, creating beautiful, user-centric digital experiences.</p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Kim">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <h3>David Kim</h3>
+                <p class="position">Head of Operations</p>
+                <p class="bio">David ensures our projects run smoothly and our clients receive exceptional service.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="about-cta">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Let's discuss how we can help you achieve your digital goals.</p>
+            <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+        </div>
+    </section>
+    
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Modern Solutions</h3>
+                <p>We provide innovative digital solutions that help businesses grow and succeed in the modern marketplace.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="services.html">Services</a>
+                    <a href="features.html">Features</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Our Services</h3>
+                <div class="footer-links">
+                    <a href="services.html">Web Development</a>
+                    <a href="services.html">App Development</a>
+                    <a href="services.html">UI/UX Design</a>
+                    <a href="services.html">Digital Marketing</a>
+                    <a href="services.html">Cloud Solutions</a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your Email Address" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Modern Solutions. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- Floating Chat Button -->
+    <div class="chat-container">
+        <button id="chatButton" class="chat-button" aria-label="Open chat">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        
+        <div class="chat-options">
+            <a href="#" class="chat-option" style="--delay: 0.1s">
+                <i class="fas fa-question-circle"></i> Help
+            </a>
+            <a href="#" class="chat-option" style="--delay: 0.2s">
+                <i class="fas fa-comments"></i> Chat
+            </a>
+            <a href="#" class="chat-option" style="--delay: 0.3s">
+                <i class="fas fa-phone-alt"></i> Call
+            </a>
+        </div>
+    </div>
+
+    <script src="js/nav.js"></script>
+    <script src="js/darkmode.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/scroll.js"></script> 
+    
+    <script src="js/floatingButtons.js" type="text/javascript"></script>
+    
+    <!-- About Page Specific JS -->
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.querySelector('.preloader');
+            preloader.classList.add('hidden');
+            
+            // Counter animation for stats
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target;
+                }
+                
+                function updateCount() {
+                    const currentCount = +counter.innerText;
+                    if (currentCount < target) {
+                        counter.innerText = Math.ceil(currentCount + increment);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

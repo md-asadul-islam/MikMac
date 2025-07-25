@@ -1,0 +1,2128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Solutions - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text: #333;
+            --text-light: #f8f9fa;
+            --gray: #6c757d;
+            --border: #dee2e6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --radius: 8px;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 4rem;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        .dark-mode {
+            --light: #121212;
+            --dark: #f8f9fa;
+            --text: #e0e0e0;
+            --text-light: #121212;
+            --gray: #a0a0a0;
+            --border: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Base Styles */
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--light);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+        }
+
+        .nav-desktop {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .nav-desktop a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-desktop a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-desktop a:hover:after,
+        .nav-desktop a.active:after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-container input {
+            padding: 0.6rem 1rem 0.6rem 2.5rem;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            background-color: var(--light);
+            color: var(--text);
+            width: 200px;
+            font-size: 0.9rem;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100vh;
+            background-color: var(--light);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 2000;
+            padding: 2rem;
+            transition: right 0.3s ease;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .close-nav {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+        }
+
+        .mobile-nav-links a i {
+            margin-right: 0.8rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 7rem 5% 4rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Page Content */
+        .page-content {
+            min-height: 60vh;
+            padding: var(--spacing-xl) 0;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .feature-card {
+            background-color: var(--light);
+            border-radius: var(--radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            background: rgba(67, 97, 238, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto var(--spacing-sm) auto;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Testimonials & Carousel */
+        .testimonials {
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial {
+            min-width: 100%;
+            padding: 1rem;
+        }
+
+        .testimonial-content {
+            background-color: var(--light);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-content:before {
+            content: """;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 6rem;
+            color: var(--primary);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .author-title {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .carousel-btn:hover {
+            background: var(--secondary);
+        }
+
+        /* Clients Section */
+        .clients-scroll-container {
+            overflow: hidden;
+            position: relative;
+            padding: 1rem 0;
+        }
+
+        .clients-scroll {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+
+        .clients-scroll:hover {
+            animation-play-state: paused;
+        }
+
+        .client-item {
+            min-width: 200px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 2rem;
+        }
+
+        .client-logo {
+            max-width: 150px;
+            max-height: 60px;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+
+        .client-item:hover .client-logo {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            min-width: 40px;
+            padding-top: 5px;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background-color: var(--light);
+            color: var(--text);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .team-member {
+            background: var(--light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-image {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+
+        .member-info {
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+
+        .member-info h3 {
+            margin-bottom: 0.3rem;
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-xs);
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .service-card {
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: var(--spacing-md);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .service-card h3 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .service-card .btn {
+            margin-top: var(--spacing-sm);
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: var(--spacing-md);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: var(--light);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-question {
+            background: rgba(67, 97, 238, 0.05);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--text-light);
+            padding: var(--spacing-xl) 0 var(--spacing-sm) 0;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            color: white;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-desktop, .nav-actions .search-container {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-container {
+                padding: 1rem;
+            }
+            
+            .hero {
+                padding: 5rem 1rem 2rem;
+            }
+            
+            .section {
+                padding: var(--spacing-lg) 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-cube"></i>
+                Modern<span>Solutions</span>
+            </a>
+            
+            <nav class="nav-desktop">
+                <a href="index.html" class="active">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="features.html">Features</a>
+                <a href="others.html">Others</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search..." id="searchInput">
+                </div>
+                
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">Modern<span>Solutions</span></a>
+            <button class="close-nav" id="closeNav">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-nav-links">
+            <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+            <a href="services.html"><i class="fas fa-cogs"></i> Services</a>
+            <a href="features.html"><i class="fas fa-star"></i> Features</a>
+            <a href="others.html"><i class="fas fa-ellipsis-h"></i> Others</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Main Content -->
+    <main>
+        <div id="pageContent">
+            <!-- Home Page Content -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Transform Your Digital Experience</h1>
+                        <p>We provide cutting-edge solutions for businesses looking to innovate and grow in the digital landscape. Our services are tailored to meet your specific needs and goals.</p>
+                        
+                        <div class="hero-btns">
+                            <a href="contact.html" class="btn btn-primary">Get Started</a>
+                            <a href="about.html" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section features">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Our Core Features</h2>
+                        <p>Discover the powerful features that make our solutions stand out from the competition</p>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3>Lightning Fast</h3>
+                            <p>Our optimized solutions ensure blazing fast performance and seamless user experiences.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Top-notch Security</h3>
+                            <p>Enterprise-grade security measures to protect your data and keep your business safe.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Fully Responsive</h3>
+                            <p>Perfectly responsive designs that work flawlessly across all devices and screen sizes.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3>Easy Customization</h3>
+                            <p>Flexible and modular architecture allows for easy customization to fit your needs.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Analytics Dashboard</h3>
+                            <p>Comprehensive analytics to track performance and make data-driven decisions.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h3>24/7 Support</h3>
+                            <p>Our dedicated support team is always available to help you with any issues.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section testimonials">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>What Our Clients Say</h2>
+                        <p>Don't just take our word for it - hear from our satisfied customers</p>
+                    </div>
+                    
+                    <div class="carousel-container">
+                        <div class="carousel" id="testimonialCarousel">
+                            <div class="testimonial">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">Modern Solutions transformed our online presence completely. Their team was professional, responsive, and delivered beyond our expectations. Our conversion rates have increased by 45% since launching the new platform.</p>
+                                    <div class="testimonial-author">
+                                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson" class="author-image">
+                                        <div class="author-info">
+                                            <h4 class="author-name">Sarah Johnson</h4>
+                                            <p class="author-title">CEO, TechInnovate</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">Working with Modern Solutions was a game-changer for our business. Their innovative approach and attention to detail resulted in a solution that perfectly addresses our needs. The support has been exceptional throughout the entire process.</p>
+                                    <div class="testimonial-author">
+                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="author-image">
+                                        <div class="author-info">
+                                            <h4 class="author-name">Michael Chen</h4>
+                                            <p class="author-title">Marketing Director, GrowthLabs</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial">
+                                <div class="testimonial-content">
+                                    <p class="testimonial-text">The team at Modern Solutions truly understands the digital landscape. They delivered a solution that not only looks fantastic but performs exceptionally well. Our user engagement has doubled since implementation.</p>
+                                    <div class="testimonial-author">
+                                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez" class="author-image">
+                                        <div class="author-info">
+                                            <h4 class="author-name">Emily Rodriguez</h4>
+                                            <p class="author-title">Product Manager, Visionary Tech</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="carousel-nav">
+                            <button class="carousel-btn" id="prevBtn">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn" id="nextBtn">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section clients">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Trusted by Industry Leaders</h2>
+                        <p>We're proud to partner with innovative companies across various industries</p>
+                    </div>
+                    
+                    <div class="clients-scroll-container">
+                        <div class="clients-scroll" id="clientsScroll">
+                            <div class="client-item">
+                                <img src="https://via.placeholder.com/150x60/4361ee/ffffff?text=TechCorp" alt="TechCorp" class="client-logo">
+                            </div>
+                            <div class="client-item">
+                                <img src="https://via.placeholder.com/150x60/3f37c9/ffffff?text=GlobalNet" alt="GlobalNet" class="client-logo">
+                            </div>
+                            <div class="client-item">
+                                <img src="https://via.placeholder.com/150x60/4895ef/ffffff?text=InnovateX" alt="InnovateX" class="client-logo">
+                            </div>
+                            <div class="client-item">
+                                <img src="https://via.placeholder.com/150x60/4361ee/ffffff?text=FutureLabs" alt="FutureLabs" class="client-logo">
+                            </div>
+                            <div class="client-item">
+                                <img src="https://via.placeholder.com/150x60/3f37c9/ffffff?text=DigitalPlus" alt="DigitalPlus" class="client-logo">
+                            </div>
+                            <div class="client-item">
+                                <img src="https://via.placeholder.com/150x60/4895ef/ffffff?text=VisionTech" alt="VisionTech" class="client-logo">
+                            </div>
+                            <div class="client-item">
+                                <img src="https://via.placeholder.com/150x60/4361ee/ffffff?text=SmartSolutions" alt="SmartSolutions" class="client-logo">
+                            </div>
+                            <div class="client-item">
+                                <img src="https://via.placeholder.com/150x60/3f37c9/ffffff?text=NextGen" alt="NextGen" class="client-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Modern Solutions</h3>
+                    <p>We provide innovative digital solutions that help businesses grow and succeed in the modern marketplace.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="services.html">Services</a>
+                        <a href="features.html">Features</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <div class="footer-links">
+                        <a href="services.html">Web Development</a>
+                        <a href="services.html">App Development</a>
+                        <a href="services.html">UI/UX Design</a>
+                        <a href="services.html">Digital Marketing</a>
+                        <a href="services.html">Cloud Solutions</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                    <form class="newsletter-form">
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email Address" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Modern Solutions. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+            }, 500);
+        });
+
+        // DOM Elements
+        const themeToggle = document.getElementById('themeToggle');
+        const hamburger = document.getElementById('hamburger');
+        const closeNav = document.getElementById('closeNav');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+        const testimonialCarousel = document.getElementById('testimonialCarousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const clientsScroll = document.getElementById('clientsScroll');
+        const searchInput = document.getElementById('searchInput');
+        
+        // Theme Toggle
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.querySelector('i').classList.remove('fa-moon');
+            themeToggle.querySelector('i').classList.add('fa-sun');
+        }
+        
+        // Mobile Navigation
+        hamburger.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeNav.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        overlay.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Testimonial Carousel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial');
+        const totalSlides = slides.length;
+        
+        function showSlide(index) {
+            if (index < 0) {
+                currentSlide = totalSlides - 1;
+            } else if (index >= totalSlides) {
+                currentSlide = 0;
+            } else {
+                currentSlide = index;
+            }
+            
+            testimonialCarousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+        
+        // Auto-rotate testimonials
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+        
+        // Infinite Scroll for Client Logos
+        const logos = clientsScroll.innerHTML;
+        clientsScroll.innerHTML = logos + logos;
+        
+        clientsScroll.addEventListener('animationiteration', () => {
+            if (clientsScroll.style.animationPlayState !== 'paused') {
+                clientsScroll.style.animation = 'none';
+                void clientsScroll.offsetWidth;
+                clientsScroll.style.animation = 'scroll 30s linear infinite';
+            }
+        });
+        
+        // Search Functionality
+        searchInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.trim();
+                if (searchTerm) {
+                    alert(`Searching for: ${searchTerm}`);
+                    // In a real app, you would redirect to search results page
+                    // window.location.href = `search.html?q=${encodeURIComponent(searchTerm)}`;
+                }
+            }
+        });
+
+        // Page Navigation
+        document.querySelectorAll('.mobile-nav-links a, .nav-desktop a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const page = this.getAttribute('href');
+                
+                // Show preloader
+                document.getElementById('preloader').classList.remove('hidden');
+                
+                // Simulate page load
+                setTimeout(() => {
+                    // Hide preloader
+                    document.getElementById('preloader').classList.add('hidden');
+                    
+                    // Close mobile nav if open
+                    mobileNav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    // Update active link
+                    document.querySelectorAll('.nav-desktop a, .mobile-nav-links a').forEach(a => {
+                        a.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Update page content
+                    document.querySelector('title').textContent = this.textContent + ' - Modern Solutions';
+                    
+                    // Update page content based on selection
+                    let content = '';
+                    switch(page) {
+                        case 'about.html':
+                            content = `
+                                        <section class="hero" style="background: linear-gradient(135deg, #4895ef, #3a7bd5);">
+                                    <div class="container">
+                                        <div class="hero-content">
+                                            <h1>Our Services</h1>
+                                            <p>Comprehensive solutions tailored to your business needs</p>
+                                        </div>
+                                    </div>
+                                </section>
+                                
+                                <section class="section">
+                                    <div class="container">
+                                        <div class="section-header">
+                                            <h2>What We Offer</h2>
+                                            <p>Professional services to help your business thrive in the digital age</p>
+                                        </div>
+                                        
+                                        <div class="services-grid">
+                                            <div class="service-card">
+                                                <div class="service-icon">
+                                                    <i class="fas fa-laptop-code"></i>
+                                                </div>
+                                                <h3>Web Development</h3>
+                                                <p>Custom websites and web applications built with the latest technologies for optimal performance and user experience.</p>
+                                                <a href="#" class="btn btn-outline">Learn More</a>
+                                            </div>
+                                            
+                                            <div class="service-card">
+                                                <div class="service-icon">
+                                                    <i class="fas fa-mobile-alt"></i>
+                                                </div>
+                                                <h3>App Development</h3>
+                                                <p>Native and cross-platform mobile applications designed to engage users and deliver exceptional experiences.</p>
+                                                <a href="#" class="btn btn-outline">Learn More</a>
+                                            </div>
+                                            
+                                            <div class="service-card">
+                                                <div class="service-icon">
+                                                    <i class="fas fa-paint-brush"></i>
+                                                </div>
+                                                <h3>UI/UX Design</h3>
+                                                <p>User-centered design solutions that create intuitive, engaging, and aesthetically pleasing digital products.</p>
+                                                <a href="#" class="btn btn-outline">Learn More</a>
+                                            </div>
+                                            
+                                            <div class="service-card">
+                                                <div class="service-icon">
+                                                    <i class="fas fa-chart-line"></i>
+                                                </div>
+                                                <h3>Digital Marketing</h3>
+                                                <p>Data-driven marketing strategies to increase brand visibility, generate leads, and drive conversions.</p>
+                                                <a href="#" class="btn btn-outline">Learn More</a>
+                                            </div>
+                                            
+                                            <div class="service-card">
+                                                <div class="service-icon">
+                                                    <i class="fas fa-cloud"></i>
+                                                </div>
+                                                <h3>Cloud Solutions</h3>
+                                                <p>Secure and scalable cloud infrastructure to optimize operations and support business growth.</p>
+                                                <a href="#" class="btn btn-outline">Learn More</a>
+                                            </div>
+                                            
+                                            <div class="service-card">
+                                                <div class="service-icon">
+                                                    <i class="fas fa-shield-alt"></i>
+                                                </div>
+                                                <h3>Cyber Security</h3>
+                                                <p>Comprehensive security solutions to protect your digital assets and ensure business continuity.</p>
+                                                <a href="#" class="btn btn-outline">Learn More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                
+                                <section class="section" style="background: rgba(67, 97, 238, 0.05);">
+                                    <div class="container">
+                                        <div class="section-header">
+                                            <h2>Our Process</h2>
+                                            <p>A structured approach to delivering exceptional results</p>
+                                        </div>
+                                        
+                                        <div class="features-grid">
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-lightbulb"></i>
+                                                </div>
+                                                <h3>Discovery</h3>
+                                                <p>We begin by understanding your business goals, target audience, and technical requirements.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-pencil-ruler"></i>
+                                                </div>
+                                                <h3>Design</h3>
+                                                <p>Our designers create intuitive user interfaces and engaging experiences.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-code"></i>
+                                                </div>
+                                                <h3>Development</h3>
+                                                <p>Our developers build robust, scalable solutions using modern technologies.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-rocket"></i>
+                                                </div>
+                                                <h3>Deployment</h3>
+                                                <p>We carefully launch your solution and ensure everything runs smoothly.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-chart-line"></i>
+                                                </div>
+                                                <h3>Optimization</h3>
+                                                <p>We continuously monitor and improve performance based on analytics.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-headset"></i>
+                                                </div>
+                                                <h3>Support</h3>
+                                                <p>Ongoing maintenance and support to keep your solution running at its best.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            `;
+                            break;
+                        case 'features.html':
+                            content = `
+                                <section class="hero" style="background: linear-gradient(135deg, #3f37c9, #312aa0);">
+                                    <div class="container">
+                                        <div class="hero-content">
+                                            <h1>Advanced Features</h1>
+                                            <p>Discover the powerful capabilities that set our solutions apart</p>
+                                        </div>
+                                    </div>
+                                </section>
+                                
+                                <section class="section">
+                                    <div class="container">
+                                        <div class="section-header">
+                                            <h2>Core Features</h2>
+                                            <p>Essential capabilities designed to empower your business</p>
+                                        </div>
+                                        
+                                        <div class="features-grid">
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-sync-alt"></i>
+                                                </div>
+                                                <h3>Real-time Updates</h3>
+                                                <p>Instant data synchronization across all devices and platforms.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-lock"></i>
+                                                </div>
+                                                <h3>Advanced Security</h3>
+                                                <p>Enterprise-grade protection with encryption and multi-factor authentication.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-chart-pie"></i>
+                                                </div>
+                                                <h3>Analytics Dashboard</h3>
+                                                <p>Comprehensive insights into user behavior and system performance.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-robot"></i>
+                                                </div>
+                                                <h3>AI Integration</h3>
+                                                <p>Smart automation and predictive capabilities powered by AI.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-plug"></i>
+                                                </div>
+                                                <h3>API Access</h3>
+                                                <p>Seamless integration with your existing systems and tools.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-cogs"></i>
+                                                </div>
+                                                <h3>Custom Workflows</h3>
+                                                <p>Tailor processes to match your unique business requirements.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                
+                                <section class="section" style="background: rgba(67, 97, 238, 0.05);">
+                                    <div class="container">
+                                        <div class="section-header">
+                                            <h2>Premium Features</h2>
+                                            <p>Advanced capabilities for enterprise-level solutions</p>
+                                        </div>
+                                        
+                                        <div class="features-grid">
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-brain"></i>
+                                                </div>
+                                                <h3>Machine Learning</h3>
+                                                <p>Predictive analytics and intelligent automation capabilities.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-users-cog"></i>
+                                                </div>
+                                                <h3>Role Management</h3>
+                                                <p>Granular control over user permissions and access levels.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-file-invoice-dollar"></i>
+                                                </div>
+                                                <h3>Billing Automation</h3>
+                                                <p>Streamlined invoicing and payment processing systems.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-globe"></i>
+                                                </div>
+                                                <h3>Multi-language</h3>
+                                                <p>Support for multiple languages with automatic translation.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-bell"></i>
+                                                </div>
+                                                <h3>Smart Notifications</h3>
+                                                <p>Customizable alerts and reminders for important events.</p>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-database"></i>
+                                                </div>
+                                                <h3>Data Backup</h3>
+                                                <p>Automated daily backups with point-in-time recovery.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                
+                                <section class="section">
+                                    <div class="container">
+                                        <div class="section-header">
+                                            <h2>Frequently Asked Questions</h2>
+                                            <p>Find answers to common questions about our features</p>
+                                        </div>
+                                        
+                                        <div class="faq-container">
+                                            <div class="faq-item">
+                                                <div class="faq-question">
+                                                    How often are new features added? <i class="fas fa-chevron-down"></i>
+                                                </div>
+                                                <div class="faq-answer">
+                                                    <p>We release new features and improvements every 2-4 weeks. Our development team continuously works on enhancing our platform based on user feedback and technological advancements.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="faq-item">
+                                                <div class="faq-question">
+                                                    Can I request custom features? <i class="fas fa-chevron-down"></i>
+                                                </div>
+                                                <div class="faq-answer">
+                                                    <p>Yes, we welcome feature requests from our customers. Our enterprise plans include the option to request custom features tailored to your specific business needs.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="faq-item">
+                                                <div class="faq-question">
+                                                    How do I access premium features? <i class="fas fa-chevron-down"></i>
+                                                </div>
+                                                <div class="faq-answer">
+                                                    <p>Premium features are available with our Professional and Enterprise plans. You can upgrade your subscription at any time through your account dashboard or by contacting our sales team.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="faq-item">
+                                                <div class="faq-question">
+                                                    Are features backward compatible? <i class="fas fa-chevron-down"></i>
+                                                </div>
+                                                <div class="faq-answer">
+                                                    <p>We maintain backward compatibility for all core features. When introducing significant changes, we provide migration paths and documentation to help you transition smoothly.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            `;
+                            break;
+                        case 'others.html':
+                            content = `
+                                <section class="hero" style="background: linear-gradient(135deg, #560bad, #480ca8);">
+                                    <div class="container">
+                                        <div class="hero-content">
+                                            <h1>Additional Resources</h1>
+                                            <p>Explore our tools, insights, and community offerings</p>
+                                        </div>
+                                    </div>
+                                </section>
+                                
+                                <section class="section">
+                                    <div class="container">
+                                        <div class="section-header">
+                                            <h2>Resources & Tools</h2>
+                                            <p>Valuable assets to support your digital journey</p>
+                                        </div>
+                                        
+                                        <div class="features-grid">
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-book"></i>
+                                                </div>
+                                                <h3>Knowledge Base</h3>
+                                                <p>Comprehensive documentation and tutorials for all our products.</p>
+                                                <a href="#" class="btn btn-outline">Explore</a>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-video"></i>
+                                                </div>
+                                                <h3>Video Tutorials</h3>
+                                                <p>Step-by-step video guides to help you master our platform.</p>
+                                                <a href="#" class="btn btn-outline">Watch</a>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-file-download"></i>
+                                                </div>
+                                                <h3>Free Templates</h3>
+                                                <p>Professionally designed templates to accelerate your projects.</p>
+                                                <a href="#" class="btn btn-outline">Download</a>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-calendar-alt"></i>
+                                                </div>
+                                                <h3>Webinars</h3>
+                                                <p>Live and recorded sessions with industry experts.</p>
+                                                <a href="#" class="btn btn-outline">Register</a>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-blog"></i>
+                                                </div>
+                                                <h3>Blog</h3>
+                                                <p>Insights, trends, and best practices in digital transformation.</p>
+                                                <a href="#" class="btn btn-outline">Read</a>
+                                            </div>
+                                            
+                                            <div class="feature-card">
+                                                <div class="feature-icon">
+                                                    <i class="fas fa-comments"></i>
+                                                </div>
+                                                <h3>Community Forum</h3>
+                                                <p>Connect with other users and share knowledge.</p>
+                                                <a href="#" class="btn btn-outline">Join</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                
+                                <section class="section" style="background: rgba(67, 97, 238, 0.05);">
+                                    <div class="container">
+                                        <div class="section-header">
+                                            <h2>Case Studies</h2>
+                                            <p>Success stories from our clients</p>
+                                        </div>
+                                        
+                                        <div class="carousel-container">
+                                            <div class="carousel" id="caseStudyCarousel">
+                                                <div class="testimonial">
+                                                    <div class="testimonial-content">
+                                                        <h3>Global Retail Chain</h3>
+                                                        <p class="testimonial-text">We helped a leading retail chain implement a unified commerce platform that connected their online and offline channels. The solution resulted in a 35% increase in online sales and a 20% improvement in inventory turnover.</p>
+                                                        <div class="testimonial-author">
+                                                            <div class="author-info">
+                                                                <p class="author-title">Key Results:</p>
+                                                                <ul>
+                                                                    <li>35% increase in online sales</li>
+                                                                    <li>20% improvement in inventory turnover</li>
+                                                                    <li>15% reduction in operational costs</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="testimonial">
+                                                    <div class="testimonial-content">
+                                                        <h3>Healthcare Provider</h3>
+                                                        <p class="testimonial-text">Our custom patient management system streamlined operations for a regional healthcare provider, reducing appointment scheduling time by 60% and improving patient satisfaction scores by 40%.</p>
+                                                        <div class="testimonial-author">
+                                                            <div class="author-info">
+                                                                <p class="author-title">Key Results:</p>
+                                                                <ul>
+                                                                    <li>60% reduction in scheduling time</li>
+                                                                    <li>40% improvement in patient satisfaction</li>
+                                                                    <li>30% decrease in administrative errors</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="testimonial">
+                                                    <div class="testimonial-content">
+                                                        <h3>Financial Services</h3>
+                                                        <p class="testimonial-text">For a financial services firm, we developed a secure client portal with AI-driven analytics that increased client retention by 25% and generated $2M in new assets under management in the first quarter.</p>
+                                                        <div class="testimonial-author">
+                                                            <div class="author-info">
+                                                                <p class="author-title">Key Results:</p>
+                                                                <ul>
+                                                                    <li>25% increase in client retention</li>
+                                                                    <li>$2M in new AUM in Q1</li>
+                                                                    <li>50% reduction in support tickets</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="carousel-nav">
+                                                <button class="carousel-btn case-prev">
+                                                    <i class="fas fa-chevron-left"></i>
+                                                </button>
+                                                <button class="carousel-btn case-next">
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            `;
+                            break;
+                        case 'contact.html':
+                            content = `
+                                <section class="hero" style="background: linear-gradient(135deg, #f72585, #b5179e);">
+                                    <div class="container">
+                                        <div class="hero-content">
+                                            <h1>Contact Us</h1>
+                                            <p>Get in touch with our team for inquiries, support, or partnerships</p>
+                                        </div>
+                                    </div>
+                                </section>
+                                
+                                <section class="section">
+                                    <div class="container">
+                                        <div class="section-header">
+                                            <h2>Get In Touch</h2>
+                                            <p>We'd love to hear from you. Reach out to us using any of these methods</p>
+                                        </div>
+                                        
+                                        <div class="contact-grid">
+                                            <div class="contact-info">
+                                                <div class="contact-item">
+                                                    <div class="contact-icon">
+                                                        <i class="fas fa-map-marker-alt"></i>
+                                                    </div>
+                                                    <div class="contact-details">
+                                                        <h3>Our Location</h3>
+                                                        <p>123 Innovation Drive, Suite 450<br>San Francisco, CA 94107</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="contact-item">
+                                                    <div class="contact-icon">
+                                                        <i class="fas fa-phone-alt"></i>
+                                                    </div>
+                                                    <div class="contact-details">
+                                                        <h3>Phone Number</h3>
+                                                        <p>+1 (555) 123-4567<br>+1 (555) 765-4321</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="contact-item">
+                                                    <div class="contact-icon">
+                                                        <i class="fas fa-envelope"></i>
+                                                    </div>
+                                                    <div class="contact-details">
+                                                        <h3>Email Address</h3>
+                                                        <p>info@modernsolutions.com<br>support@modernsolutions.com</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="contact-item">
+                                                    <div class="contact-icon">
+                                                        <i class="fas fa-clock"></i>
+                                                    </div>
+                                                    <div class="contact-details">
+                                                        <h3>Business Hours</h3>
+                                                        <p>Monday-Friday: 9am - 6pm<br>Saturday: 10am - 4pm<br>Sunday: Closed</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="map-container" style="height: 300px; background: #eee; border-radius: var(--radius); margin-top: 2rem;">
+                                                    <!-- Map placeholder -->
+                                                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--gray);">
+                                                        <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-right: 1rem;"></i>
+                                                        <span>Interactive Map Location</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="contact-form">
+                                                <h3>Send us a message</h3>
+                                                <form id="contactForm">
+                                                    <div class="form-group">
+                                                        <label for="name">Full Name</label>
+                                                        <input type="text" id="name" class="form-control" required>
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label for="email">Email Address</label>
+                                                        <input type="email" id="email" class="form-control" required>
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label for="subject">Subject</label>
+                                                        <input type="text" id="subject" class="form-control" required>
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label for="message">Your Message</label>
+                                                        <textarea id="message" class="form-control" required></textarea>
+                                                    </div>
+                                                    
+                                                    <button type="submit" class="btn btn-primary">Send Message</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                
+                                <section class="section" style="background: rgba(67, 97, 238, 0.05);">
+                                    <div class="container">
+                                        <div class="section-header">
+                                            <h2>Frequently Asked Questions</h2>
+                                            <p>Quick answers to common inquiries</p>
+                                        </div>
+                                        
+                                        <div class="faq-container">
+                                            <div class="faq-item">
+                                                <div class="faq-question">
+                                                    What is your typical response time? <i class="fas fa-chevron-down"></i>
+                                                </div>
+                                                <div class="faq-answer">
+                                                    <p>We strive to respond to all inquiries within 24 hours during business days. For urgent matters, please call our support line for immediate assistance.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="faq-item">
+                                                <div class="faq-question">
+                                                    Do you offer free consultations? <i class="fas fa-chevron-down"></i>
+                                                </div>
+                                                <div class="faq-answer">
+                                                    <p>Yes, we offer a free 30-minute consultation to discuss your project requirements and how we can help you achieve your goals.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="faq-item">
+                                                <div class="faq-question">
+                                                    What are your working hours? <i class="fas fa-chevron-down"></i>
+                                                </div>
+                                                <div class="faq-answer">
+                                                    <p>Our standard business hours are Monday-Friday from 9:00 AM to 6:00 PM local time. Support is available 24/7 for enterprise clients.</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="faq-item">
+                                                <div class="faq-question">
+                                                    How do I schedule a meeting? <i class="fas fa-chevron-down"></i>
+                                                </div>
+                                                <div class="faq-answer">
+                                                    <p>You can schedule a meeting directly through our online calendar system, or contact our support team to arrange a suitable time.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            `;
+                            break;
+                        default:
+                            content = document.getElementById('pageContent').innerHTML;
+                    }
+                    
+                    // Update page content
+                    document.getElementById('pageContent').innerHTML = content;
+                    
+                    // Initialize new page components
+                    if (page === 'others.html' || page === 'features.html') {
+                        // Initialize FAQ functionality
+                        const faqItems = document.querySelectorAll('.faq-item');
+                        faqItems.forEach(item => {
+                            const question = item.querySelector('.faq-question');
+                            question.addEventListener('click', () => {
+                                item.classList.toggle('active');
+                            });
+                        });
+                        
+                        // Initialize carousel if present
+                        if (page === 'others.html') {
+                            const caseCarousel = document.getElementById('caseStudyCarousel');
+                            const casePrevBtn = document.querySelector('.case-prev');
+                            const caseNextBtn = document.querySelector('.case-next');
+                            
+                            let currentCase = 0;
+                            const caseSlides = document.querySelectorAll('#caseStudyCarousel .testimonial');
+                            const totalCases = caseSlides.length;
+                            
+                            function showCase(index) {
+                                if (index < 0) {
+                                    currentCase = totalCases - 1;
+                                } else if (index >= totalCases) {
+                                    currentCase = 0;
+                                } else {
+                                    currentCase = index;
+                                }
+                                
+                                caseCarousel.style.transform = `translateX(-${currentCase * 100}%)`;
+                            }
+                            
+                            if (casePrevBtn && caseNextBtn) {
+                                casePrevBtn.addEventListener('click', () => {
+                                    showCase(currentCase - 1);
+                                });
+                                
+                                caseNextBtn.addEventListener('click', () => {
+                                    showCase(currentCase + 1);
+                                });
+                            }
+                        }
+                    }
+                    
+                    if (page === 'contact.html') {
+                        // Initialize contact form
+                        const contactForm = document.getElementById('contactForm');
+                        if (contactForm) {
+                            contactForm.addEventListener('submit', function(e) {
+                                e.preventDefault();
+                                alert('Thank you for your message! We will get back to you soon.');
+                                this.reset();
+                            });
+                        }
+                        
+                        // Initialize FAQ functionality
+                        const faqItems = document.querySelectorAll('.faq-item');
+                        faqItems.forEach(item => {
+                            const question = item.querySelector('.faq-question');
+                            question.addEventListener('click', () => {
+                                item.classList.toggle('active');
+                            });
+                        });
+                    }
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
